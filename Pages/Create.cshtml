@@ -1,0 +1,17 @@
+@page
+@model CreateModel
+@{
+    ViewData["Title"] = "افزودن داستان";
+}
+
+<h1>افزودن داستان جدید</h1>
+
+<form method="post">
+    <label>عنوان:</label><br />
+    <input asp-for="Story.Title" /><br /><br />
+
+    <label>محتوا:</label><br />
+    <textarea asp-for="Story.Content" rows="10" cols="60"></textarea><br /><br />
+
+    <button type="submit">ذخیره</button>
+</form>

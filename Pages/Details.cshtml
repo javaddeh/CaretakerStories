@@ -1,0 +1,18 @@
+@page
+@model DetailsModel
+@{
+    ViewData["Title"] = "جزئیات داستان";
+}
+
+<h1>@Model.Story?.Title</h1>
+
+<p>
+    <strong>تاریخ ایجاد:</strong> @Model.Story?.CreatedAt.ToLocalTime().ToString("g")<br />
+    <strong>آخرین به‌روزرسانی:</strong> @Model.Story?.UpdatedAt.ToLocalTime().ToString("g")
+</p>
+
+<p style="white-space: pre-line;">
+    @Model.Story?.Content
+</p>
+
+<a asp-page="/Index">← بازگشت به لیست</a>

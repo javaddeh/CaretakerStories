@@ -1,0 +1,19 @@
+@page
+@model EditModel
+@{
+    ViewData["Title"] = "ویرایش داستان";
+}
+
+<h1>ویرایش داستان</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Story.Id" />
+
+    <label>عنوان:</label><br />
+    <input asp-for="Story.Title" /><br /><br />
+
+    <label>محتوا:</label><br />
+    <textarea asp-for="Story.Content" rows="10" cols="60"></textarea><br /><br />
+
+    <button type="submit">به‌روزرسانی</button>
+</form>

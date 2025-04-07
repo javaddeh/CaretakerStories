@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "داستان‌ها";
+}
+
+<h1>داستان‌هایی که اخیراً به‌روزرسانی شده‌اند</h1>
+<a asp-page="/Create">+ افزودن داستان جدید</a>
+
+<ul>
+@foreach (var story in Model.Stories)
+{
+    <li>
+        <strong>@story.Title</strong><br />
+        آخرین به‌روزرسانی: @story.UpdatedAt.ToLocalTime().ToString("g")<br />
+        <a asp-page="/Details" asp-route-id="@story.Id">مشاهده</a> |
+        <a asp-page="/Edit" asp-route-id="@story.Id">ویرایش</a>
+    </li>
+}
+</ul>
