@@ -2,6 +2,7 @@ using CaretakerStories.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=stories.db"));
+
+// Register TimeZoneInfo for the local timezone (e.g., Asia/Tehran)
+builder.Services.AddSingleton<TimeZoneInfo>(TimeZoneInfo.FindSystemTimeZoneById("Asia/Tehran"));
 
 var app = builder.Build();
 
@@ -28,7 +32,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.MapRazorPages();
 
-
+// Set culture to Farsi (Iran)
 var cultureInfo = new CultureInfo("fa-IR");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
@@ -40,4 +44,5 @@ app.UseRequestLocalization(new RequestLocalizationOptions
     SupportedUICultures = new[] { cultureInfo }
 });
 
+// Run the app
 app.Run();
