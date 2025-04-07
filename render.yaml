@@ -3,5 +3,6 @@ services:
     name: caretaker-stories
     env: asp.net
     plan: free
-    buildCommand: 'dotnet build'
+    buildCommand: 'dotnet build --framework net9.0'
     startCommand: 'dotnet CaretakerStories.dll'
+
